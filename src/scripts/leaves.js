@@ -20,6 +20,22 @@ function resizeCanvas () {
   draw()
 }
 
+// gyro stuff
+var gyroUp = 1
+var gyroLeft = 0
+window.addEventListener('deviceorientation', function (event) {
+  var beta = event.beta
+  var gamma = event.gamma
+  if (beta == null && gamma == null) return
+
+  gyroUp = (beta > 0)
+    ? (90 - Math.abs(beta - 90)) / 90
+    : -(90 - Math.abs(beta + 90)) / 90
+
+  gyroLeft = (gamma / 90)
+  if (beta > 90) gyroLeft *= -1
+})
+
 function start () {
   for (var i = 0; i < mp; i++) {
     particles.push({
@@ -69,7 +85,8 @@ function update () {
   angle += 0.6*dt
   var W = canvas.width
   var H = canvas.height
-  var sinInc = Math.sin(angle) * 120 * dt
+  var sinInc = gyroUp * Math.sin(angle) * 120 * dt
+  sinInc += 300 * gyroLeft * dt
 
   for (var i = 0; i < mp; i++) {
     var p = particles[i]
@@ -77,7 +94,7 @@ function update () {
     // We will add 1 to the cos function to prevent negative values which will lead flakes to move upwards
     // Every particle has its own density which can be used to make the downward movement different for each flake
     // Lets make it more random by adding in the radius
-    p.y += (Math.cos(angle + p.d) + 1 + p.r / 25) * 60 * dt
+    p.y += gyroUp * (Math.cos(angle + p.d) + 1 + p.r / 25) * 60 * dt
     p.x += sinInc
 
     // Sending flakes back from the top when it exits
