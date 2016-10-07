@@ -2,7 +2,7 @@ var leaves;
 
 // Testing flag, for mocking the dates of the events
 // without having to change the dates in the events.json
-var testing = false;
+var testing = true;
 
 Number.prototype.pad = function(size) {
   var s = String(this);
@@ -21,7 +21,12 @@ var app = new Vue({
     events: [],
     activeIds: [],
     animation: true,
-    reload: false
+    reload: false,
+    days: [
+      new Date("2016/10/07"),
+      new Date("2016/10/08"),
+      new Date("2016/10/09")
+    ]
   },
   ready: function() {
     this.updateEvents();
@@ -49,12 +54,12 @@ var app = new Vue({
     // the text dates converted to Date 
     // objects
     newEvent: function(event) {
-      index = app.oldIndexById(event._id);
+      oldObject = app.oldObject(event._id);
 
-      if(index == -1) {
+      if(oldObject == -1) {
         event.notifySent = false;
       } else {
-        event.notifySent = this.events[index].notifySent;
+        event.notifySent = oldObject.notifySent;
       }
 
       event.begin = new Date(event.begin);
@@ -68,6 +73,8 @@ var app = new Vue({
       }
       
       event.progress = app.whereAreWe(event.begin, event.end);
+      event.current = event.progress > 0;
+      event.past = event.progress == -1;
 
       if(!event.notifySent && event.progress > 0) {
          app.notify(event.title, event.place, event.type);
@@ -77,30 +84,19 @@ var app = new Vue({
       return event;
     },
 
-    // fn updateEvent()
-    // updates an existing event with new
-    // info
-    updateEvent: function(event) {
-        index = app.oldIndexById(event._id);
-
-        event.begin = new Date(event.begin);
-        event.end = new Date(event.end);
-        newProgress = app.whereAreWe(event.begin, event.end);
-
-        this.events.$set(index, event);
-    },
-
     // fn oldIndexById()
     // find event in old event list by ID,
     // if event is found the index is returned
     // if it is not found -1 is returned
-    oldIndexById: function(id) {
+    oldObject: function(id) {
       old_events = this.$get('events')
 
       if(old_events != null) {
         for(var i = 0; i < old_events.length; i++) {
-          if(old_events[i]._id == id) {
-            return i;
+          for(var j = 0; j < old_events[i].events.length; j++) {
+            if(old_events[i].events[j]._id == id) {
+              return old_events[i].events[j];
+            }
           }
         }
       }
@@ -127,7 +123,40 @@ var app = new Vue({
                  (b.title < a.title ? 1 : -1);
         });
 
-        this.$set('events', new_events);
+        now = new Date(Date.now());
+
+        events = [
+          {
+            day: "Friday",
+            events: []
+          },
+          {
+            day: "Saturday",
+            events: []
+          },
+          {
+            day: "Sunday",
+            events: []
+          }
+        ];
+
+        if(!(now > this.days[1])) {
+          events[0].events = new_events.filter(function(event) {
+            return event.begin < app.days[1];
+          });
+        }
+
+        if(!(now > this.days[2])) {
+          events[1].events = new_events.filter(function(event) {
+            return event.begin < app.days[2] && event.begin >= app.days[1];
+          });
+        }
+
+        events[2].events = new_events.filter(function(event) {
+          return event.begin > app.days[2];
+        });
+
+        this.$set('events', events);
       }, function(response) {
         console.log("Sth wrong");
       });
@@ -198,28 +227,6 @@ var app = new Vue({
   watch: {
     animation: function (data) {
       this.toggleAnimation(data);
-    }
-  },
-  computed: {
-    completedEvents: function() {
-      return this.events.filter(function(data) {
-        return app.whereAreWe(data.begin, data.end) === -1;
-      }).slice(-3);
-    },
-    currentEvents: function() {
-      current = this.events.filter(function(data) {
-        this.reload = false;
-        return app.whereAreWe(data.begin, data.end) > 0;
-      });
-
-      return current;
-    },
-    futureEvents: function() {
-      future = this.events.filter(function(data) {
-        return app.whereAreWe(data.begin, data.end) === -2;
-      });
-
-      return future;
     }
   },
   filters: {

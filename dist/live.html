@@ -39,39 +39,23 @@
 
         <h1># HACKUPC Live <span class="lenny">ヽ(◕‿◕)ﾉ</span> <span id="title-date"></span> <span v-on:click="options" class="fa fa-cog"></span></h1>
 
-        <div id="timetable">
-            <div class="event done" v-for="event in completedEvents" track-by="_signature">
-                <span style="opacity: {{0.3 + $index * 0.2}};">
+        <div id="timetable"> 
+            <div class="day" v-for="day in events" track-by="$index">
+                <div class="day">
+                    ## {{day.day}}
+                </div>
+                <div class="event" v-for="event in day.events" v-bind:class="{'current': event.current}" track-by="$index">
                     <h3>- {{event.title}}</h3>
                     <span class="where">(📍 {{event.place}})</span>
                     <p>{{event.begin | hackupcdate}} - {{event.end | hackupcdate}}</p>
-                </span>
-            </div>
-
-            <div class="current">
-                <div class="event highlighted" v-for="event in currentEvents" track-by="_signature">
-                    <span>
-                        <strong>
-                            <h3>- {{event.title}} </h3>
-                            <span class="where">(📍 {{event.place}})</span>
-                        </strong>
-                        <p>{{event.begin | hackupcdate}} - {{event.end | hackupcdate}}</p>
-                    </span>
-                    <div class="progress" id="progress-{{$index}}" v-if="event.showProgress">
-                      <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" v-bind:style="{ width: event.progress*100 + '%' }">
-                      </div>
+                    <div class="progress" v-if="event.current">
+                        <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" v-bind:style="{ width: event.progress*100 + '%' }">
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="event pending" v-for="event in futureEvents" track-by="_signature">
-                <span>
-                    <h3>- {{event.title}}</h3>
-                    <span class="where">(📍 {{event.place}})</span>
-                    <p>{{event.begin | hackupcdate}} - {{event.end | hackupcdate}}</p>
-                </span>
-            </div>
         </div>
+
 
         <div v-if="showoptions" id="options">
             <div class="options-content">
@@ -121,6 +105,6 @@
     <script src="https://unpkg.com/vue@1.0.28/dist/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
     <script src="/assets/js/leaves.webgl.min.js"></script>
-    <script src="/assets/js/live.min.js"></script>
+    <script src="/assets/js/live.js"></script>
   </body>
 </html>
