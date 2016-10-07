@@ -37,11 +37,11 @@
             </div>
         </nav>
 
-        <h1># HACKUPC Live <span class="lenny">ヽ(◕‿◕)ﾉ</span> <span id="title-date"></span> <span v-on:click="options" class="fa fa-cog"></span></h1>
+        <h1 style="zoom: 0.8"># HACKUPC Live <span class="lenny">ヽ(◕‿◕)ﾉ</span> <span id="title-date"></span> <span v-on:click="options" class="fa fa-cog"></span></h1>
 
-        <div id="timetable"> 
+        <div style="zoom: 0.8" id="timetable">
             <div class="day" v-for="day in events" track-by="$index">
-                <div class="day">
+                <div class="day--title">
                     ## {{day.day}}
                 </div>
                 <div class="event" v-for="event in day.events" v-bind:class="{'current': event.current}" track-by="$index">
