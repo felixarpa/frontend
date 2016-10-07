@@ -19,9 +19,7 @@ var app = new Vue({
     eventsNotify: true,
     bieneNotify: false,
     events: [],
-    activeIds: [],
     animation: true,
-    reload: false,
     days: [
       new Date("2016/10/07"),
       new Date("2016/10/08"),
