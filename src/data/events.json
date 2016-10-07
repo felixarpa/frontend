@@ -2,7 +2,7 @@
   "events": [
     {
       "begin": "2016/10/07 13:00:00", 
-      "end": "2016/10/07 19:00:00", 
+      "end": "2016/10/07 19:00:00",
       "title": "Hacker Registration",
       "place": "A5-A6 S1", 
       "_id": "registration", 
@@ -10,7 +10,7 @@
     }, 
     {
       "begin": "2016/10/07 19:00:00", 
-      "end": "2016/10/07 21:00:00", 
+      "end": "2016/10/07 21:00:00",
       "title": "Opening Talk",
       "place": "Vertex", 
       "_id": "openingtalk", 
@@ -18,7 +18,7 @@
     },
     {
       "begin": "2016/10/07 21:00:00", 
-      "end": "", 
+      "end": "",
       "title": "Hack Start",
       "place": "-", 
       "_id": "hackstart", 
@@ -26,7 +26,7 @@
     }, 
     {
       "begin": "2016/10/07 21:10:00", 
-      "end": "2016/10/07 22:00:00", 
+      "end": "2016/10/07 22:00:00",
       "title": "Dinner",
       "place": "Meal zone", 
       "_id": "dinner", 
@@ -34,63 +34,63 @@
     }, 
     {
       "begin": "2016/10/07 22:00:00", 
-      "end": "2016/10/07 23:00:00", 
+      "end": "2016/10/07 23:00:00",
       "title": "Team Building",
       "place": "A6E02", 
       "_id": "teambuilding", 
       "type": "events"
     }, 
     {
-      "begin": "2016/10/07 22:00:00", 
-      "end": "2016/10/07 23:00:00", 
+      "begin": "2016/10/07 22:30:00", 
+      "end": "2016/10/07 23:30:00",
       "title": "Intro to Android",
       "place": "A5001", 
       "_id": "introtoandroid", 
       "type": "talks"
     }, 
     {
-      "begin": "2016/10/07 22:00:00", 
-      "end": "2016/10/07 23:00:00", 
+      "begin": "2016/10/07 22:30:00", 
+      "end": "2016/10/07 23:30:00",
       "title": "Intro to Skyscanner API",
       "place": "A5002", 
       "_id": "skyscannerintro", 
       "type": "talks"
     }, 
     {
-      "begin": "2016/10/07 23:00:00", 
-      "end": "2016/10/08 00:00:00", 
-      "title": "HTML5, CSS & JS 101",
+      "begin": "2016/10/07 23:30:00", 
+      "end": "2016/10/08 00:30:00",
+      "title": "Intro to Git",
       "place": "A5001", 
       "_id": "htmlcssjs", 
       "type": "talks"
     }, 
     {
-      "begin": "2016/10/07 23:00:00", 
-      "end": "2016/10/08 00:00:00", 
+      "begin": "2016/10/07 23:30:00", 
+      "end": "2016/10/08 00:30:00",
       "title": "Intro to APIs",
       "place": "A5002", 
       "_id": "introtoapis", 
       "type": "talks"
     }, 
     {
-      "begin": "2016/10/08 00:00:00", 
-      "end": "2016/10/08 01:00:00", 
+      "begin": "2016/10/08 00:30:00", 
+      "end": "2016/10/08 01:30:00",
       "title": "Intro to Flask",
       "place": "A5001", 
       "_id": "introtoflask", 
       "type": "talks"
     }, 
     {
-      "begin": "2016/10/08 00:00:00", 
-      "end": "2016/10/08 01:00:00", 
-      "title": "Intro to Git",
+      "begin": "2016/10/08 00:30:00", 
+      "end": "2016/10/08 01:30:00",
+      "title": "HTML5, CSS & JS 101",
       "place": "A5002", 
       "_id": "introtogit", 
       "type": "talks"
     }, 
     {
       "begin": "2016/10/08 01:00:00", 
-      "end": "", 
+      "end": "",
       "title": "Midnight Snack",
       "place": "A6E02", 
       "_id": "midnightsnack1", 
@@ -98,7 +98,7 @@
     }, 
     {
       "begin": "2016/10/08 08:00:00", 
-      "end": "2016/10/08 09:00:00", 
+      "end": "2016/10/08 09:00:00",
       "title": "Breakfast",
       "place": "Meal Zone", 
       "_id": "breakfast1", 
@@ -106,7 +106,7 @@
     }, 
     {
       "begin": "2016/10/08 09:00:00", 
-      "end": "2016/10/08 11:00:00", 
+      "end": "2016/10/08 11:00:00",
       "title": "Showers",
       "place": "Pavell\u00f3", 
       "_id": "showers1", 
@@ -114,7 +114,7 @@
     }, 
     {
       "begin": "2016/10/08 09:00:00", 
-      "end": "2016/10/08 12:30:00", 
+      "end": "2016/10/08 12:30:00",
       "title": "Tech Talks",
       "place": "A5001-A5002", 
       "_id": "techtalks", 
@@ -122,7 +122,7 @@
     }, 
     {
       "begin": "2016/10/08 13:00:00", 
-      "end": "2016/10/08 14:00:00", 
+      "end": "2016/10/08 14:00:00",
       "title": "Lunch",
       "place": "Meal Zone", 
       "_id": "lunch1", 
@@ -130,7 +130,7 @@
     }, 
     {
       "begin": "2016/10/08 15:00:00", 
-      "end": "2016/10/08 18:30:00", 
+      "end": "2016/10/08 18:30:00",
       "title": "Bitcoin - Blockchain",
       "place": "A5001", 
       "_id": "bitcoin", 
@@ -138,7 +138,7 @@
     }, 
     {
       "begin": "2016/10/08 20:00:00", 
-      "end": "2016/10/08 21:00:00", 
+      "end": "2016/10/08 21:00:00",
       "title": "Dinner",
       "place": "Meal Zone", 
       "_id": "dinner2", 
@@ -146,7 +146,7 @@
     }, 
     {
       "begin": "2016/10/08 22:00:00", 
-      "end": "2016/10/08 23:00:00", 
+      "end": "2016/10/08 23:00:00",
       "title": "SlideShare Karaoke",
       "place": "A6001", 
       "_id": "slidesharekaraoke", 
@@ -154,7 +154,7 @@
     }, 
     {
       "begin": "2016/10/08 23:00:00", 
-      "end": "2016/10/09 00:00:00", 
+      "end": "2016/10/09 00:00:00",
       "title": "HackUiz",
       "place": "A6001", 
       "_id": "hackuiz", 
@@ -162,7 +162,7 @@
     }, 
     {
       "begin": "2016/10/09 00:00:00", 
-      "end": "", 
+      "end": "",
       "title": "Midnight Snack",
       "place": "A6E02", 
       "_id": "midnightsnack2", 
@@ -170,7 +170,7 @@
     }, 
     {
       "begin": "2016/10/09 00:30:00", 
-      "end": "2016/10/09 03:00:00", 
+      "end": "2016/10/09 03:00:00",
       "title": "Midnight Games!",
       "place": "A5101", 
       "_id": "midnightgames", 
@@ -178,7 +178,7 @@
     }, 
     {
       "begin": "2016/10/09 08:00:00", 
-      "end": "2016/10/09 09:00:00", 
+      "end": "2016/10/09 09:00:00",
       "title": "Breakfast",
       "place": "Meal Zone", 
       "_id": "breakfast2", 
@@ -186,7 +186,7 @@
     }, 
     {
       "begin": "2016/10/09 08:00:00", 
-      "end": "2016/10/09 09:30:00", 
+      "end": "2016/10/09 09:30:00",
       "title": "Hack Submissions",
       "place": "Devpost", 
       "_id": "hacksubmissions", 
@@ -194,7 +194,7 @@
     }, 
     {
       "begin": "2016/10/09 09:00:00", 
-      "end": "", 
+      "end": "",
       "title": "Hack Ends",
       "place": "-", 
       "_id": "hackends", 
@@ -202,7 +202,7 @@
     }, 
     {
       "begin": "2016/10/09 09:15:00", 
-      "end": "2016/10/09 11:00:00", 
+      "end": "2016/10/09 11:00:00",
       "title": "Showers",
       "place": "Pavell\u00f3", 
       "_id": "showers2", 
@@ -210,7 +210,7 @@
     }, 
     {
       "begin": "2016/10/09 10:30:00", 
-      "end": "2016/10/09 12:30:00", 
+      "end": "2016/10/09 12:30:00",
       "title": "Hack Demos",
       "place": "A5 1st floor", 
       "_id": "hackdemos", 
@@ -218,7 +218,7 @@
     }, 
     {
       "begin": "2016/10/09 12:30:00", 
-      "end": "2016/10/09 13:30:00", 
+      "end": "2016/10/09 13:30:00",
       "title": "Lunch",
       "place": "Meal Zone", 
       "_id": "lunch2", 
@@ -226,7 +226,7 @@
     }, 
     {
       "begin": "2016/10/09 14:30:00", 
-      "end": "2016/10/09 16:00:00", 
+      "end": "2016/10/09 16:00:00",
       "title": "Winner & Closing Ceremony",
       "place": "Vertex", 
       "_id": "winnerandclosing", 

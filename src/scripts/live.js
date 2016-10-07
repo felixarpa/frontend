@@ -40,6 +40,10 @@ var app = new Vue({
         app.updateEvents();
       }, 30000);
     }
+
+    this.foodNotify = localStorage.foodNotify;
+    this.talksNotify = localStorage.talksNotify;
+    this.eventsNotify = localStorage.eventsNotify;
   },
   methods: {
     options: function() {
@@ -225,6 +229,15 @@ var app = new Vue({
   watch: {
     animation: function (data) {
       this.toggleAnimation(data);
+    },
+    foodNotify: function (data) {
+      localStorage.foodNotify = data;
+    },
+    talksNotify: function (data) {
+      localStorage.talksNotify = data;
+    },
+    eventsNotify: function (data) {
+      localStorage.eventsNotify = data;
     }
   },
   filters: {

@@ -44,7 +44,7 @@
                 <div class="day--title">
                     ## {{day.day}}
                 </div>
-                <div class="event" v-for="event in day.events" v-bind:class="{'current': event.current}" track-by="$index">
+                <div class="event" v-for="event in day.events" v-bind:class="{'current': event.current, 'done': event.past}" track-by="$index">
                     <h3>- {{event.title}}</h3>
                     <span class="where">(📍 {{event.place}})</span>
                     <p>{{event.begin | hackupcdate}} - {{event.end | hackupcdate}}</p>
