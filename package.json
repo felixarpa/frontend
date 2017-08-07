@@ -19,6 +19,7 @@
     "scss:main": "node-sass --output-style compressed src/styles/main.2017f.scss dist/assets/css/main.2017f.min.css",
     "scss:tiles": "node-sass --output-style compressed src/styles/tiles.scss dist/assets/css/tiles.min.css",
     "scss:live": "node-sass --output-style compressed  src/styles/app.scss dist/assets/css/app.min.css",
+    "minjs:egg": "tsc src/scripts/egg.ts --outFile /dev/stdout | uglifyjs -m -c -o dist/assets/js/egg.min.js ",
     "minjs:main": "tsc src/scripts/tiles.ts --outFile /dev/stdout | uglifyjs -m -c -o dist/assets/js/tiles.webgl.min.js ",
     "minjs:live": "uglifyjs src/scripts/config.live.js src/scripts/util.live.js src/scripts/live.js -m -c -o dist/assets/js/app.min.js",
     "watch:js": "onchange \"src/scripts\" -- npm-run-all dist:scripts notify-update",
