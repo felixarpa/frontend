@@ -95,7 +95,7 @@ enum TileColors{
 
 class TileGrid {
 	container: Element;
-	readonly tickDelay: number = 200;
+	readonly tickDelay: number = 400;
 	private _rows: Array<TileRow>;
 	private _currentState: TileGridState;
 	private _lastState: TileGridState;
@@ -105,7 +105,8 @@ class TileGrid {
 	//Tiles per row
 	private _m: number;
 	private _tileWidth: number;
-
+	private _lastTimestamp : number;
+	private _counter: number;
 	//Tiles are squares, so we only need the width
 	constructor(windowWidth: number, windowHeight: number, 
 				tileWidth: number = 120, 
@@ -130,8 +131,16 @@ class TileGrid {
 			this.container.appendChild (row.container);
 			this._rows.push(row);
 		}
-		var that = this;
-		setInterval(() => this.tick(), this.tickDelay);
+		this._lastTimestamp = 0;
+		this._counter = 0;
+		requestAnimationFrame((t) => this.update(t));
+	}
+
+	update(t){
+		let dt = t - this._lastTimestamp;
+		this._lastTimestamp = t;
+		this.tick(dt);
+		requestAnimationFrame((t) => this.update(t));
 	}
 
 	resize(windowWidth: number, windowHeight: number){
@@ -194,45 +203,52 @@ class TileGrid {
 		this._n = new_n;
 	}
 
-	tick(){
+	tick(deltatime: number){
+		this._counter += deltatime;
+		//Update only if 'tickDelay' ms passed
+		if(this._counter > this.tickDelay)
+		{
+			//Reset counter
+			this._counter = 0;
 
-        if (this._lastState != this._currentState) {
-            this.clear();
-        }
-        if (this._currentState == TileGridState.Random) {
-            this._lastState = TileGridState.Random;
-            
-            let i = Math.floor (Math.random() * this._n);
-            let j = Math.floor (Math.random() * this._m);
+	        if (this._lastState != this._currentState) {
+	            this.clear();
+	        }
+	        if (this._currentState == TileGridState.Random) {
+	            this._lastState = TileGridState.Random;
+	            
+	            let i = Math.floor (Math.random() * this._n);
+	            let j = Math.floor (Math.random() * this._m);
 
-            let randNum = Math.random();
+	            let randNum = Math.random();
 
-            if (randNum < 0.25) {
-                this._rows[i].getTile(j).paint(TileColors.Yellow);
-            }
-            else if (randNum < 0.5) {
-				this._rows[i].getTile(j).paint(TileColors.Red);
-			}
-			else if (randNum < 0.75) {
-				this._rows[i].getTile(j).paint(TileColors.Green);
-			}
-			else
-			{
-				this._rows[i].getTile(j).paint(TileColors.Orange);	
-			}
-        }
-        else if (this._currentState == TileGridState.Static) {
-            this._lastState = TileGridState.Static;
+	            if (randNum < 0.25) {
+	                this._rows[i].getTile(j).paint(TileColors.Yellow);
+	            }
+	            else if (randNum < 0.5) {
+					this._rows[i].getTile(j).paint(TileColors.Red);
+				}
+				else if (randNum < 0.75) {
+					this._rows[i].getTile(j).paint(TileColors.Green);
+				}
+				else
+				{
+					this._rows[i].getTile(j).paint(TileColors.Orange);	
+				}
+	        }
+	        else if (this._currentState == TileGridState.Static) {
+	            this._lastState = TileGridState.Static;
 
-            for (let row in this._rows) {
-            	let i = Number(row);
-                if(i < this._n * 0.25)
-					this._rows[i].paint(TileColors.Yellow);
-                else if(i > this._n * 0.75)
-					this._rows[i].paint(TileColors.Red);
-                
-            }
-        }
+	            for (let row in this._rows) {
+	            	let i = Number(row);
+	                if(i < this._n * 0.25)
+						this._rows[i].paint(TileColors.Yellow);
+	                else if(i > this._n * 0.75)
+						this._rows[i].paint(TileColors.Red);
+	                
+	            }
+	        }
+		}
 	}
 
 	changeState(){
